@@ -31,6 +31,8 @@ targets:
         # ponytail: fixed night theme — lock dark mode so default text never renders black
         UIUserInterfaceStyle: Dark
         NSHealthShareUsageDescription: Sleeptab reads your sleep data to calculate your sleep debt. Your data never leaves this device.
+        # ponytail: app never writes to Health, but HealthKit API references make ITMS-90683 require this key
+        NSHealthUpdateUsageDescription: Sleeptab does not write any data to Health. This permission is required by the HealthKit framework.
         ITSAppUsesNonExemptEncryption: false
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait

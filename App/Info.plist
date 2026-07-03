@@ -24,6 +24,8 @@
 	<false/>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Sleeptab reads your sleep data to calculate your sleep debt. Your data never leaves this device.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Sleeptab does not write any data to Health. This permission is required by the HealthKit framework.</string>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations</key>

@@ -1,0 +1,88 @@
+name: Sleeptab
+options:
+  bundleIdPrefix: com.sunpebble
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: 62HCT6Q83X
+    MARKETING_VERSION: 0.1.0 # x-release-please-version
+    CURRENT_PROJECT_VERSION: 1
+targets:
+  Sleeptab:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sunpebble.sleeptab
+        CODE_SIGN_ENTITLEMENTS: App/Sleeptab.entitlements
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Sleeptab
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        # ponytail: fixed night theme — lock dark mode so default text never renders black
+        UIUserInterfaceStyle: Dark
+        NSHealthShareUsageDescription: Sleeptab reads your sleep data to calculate your sleep debt. Your data never leaves this device.
+        ITSAppUsesNonExemptEncryption: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+    dependencies:
+      - target: SleeptabWidget
+        embed: true
+  SleeptabWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Widget
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sunpebble.sleeptab.widget
+        CODE_SIGN_ENTITLEMENTS: Widget/SleeptabWidget.entitlements
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: Sleeptab
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+  SleeptabTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - Tests
+      - path: Sleeptab.storekit
+        buildPhase: resources
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Sleeptab
+schemes:
+  Sleeptab:
+    build:
+      targets:
+        Sleeptab: all
+    run:
+      config: Debug
+      storeKitConfiguration: Sleeptab.storekit
+      commandLineArguments:
+        "-pro": false
+        "-seedDemo": false
+    test:
+      targets:
+        - SleeptabTests

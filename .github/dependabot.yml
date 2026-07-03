@@ -1,0 +1,18 @@
+# Dependabot 每周检查并更新依赖,每个技术栈合并为一个组(单个 PR),减少维护噪音。
+# commit 前缀用 chore,避免被 release-please 计入版本。
+#
+# 未纳入的生态:
+#   - swift(SPM):项目用 XcodeGen,无 SPM 依赖声明可供 dependabot 解析。
+version: 2
+updates:
+  # GitHub Actions —— .github/workflows 里的 action 版本
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore"
+    groups:
+      github-actions:
+        patterns:
+          - "*"

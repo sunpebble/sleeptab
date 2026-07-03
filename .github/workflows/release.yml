@@ -39,7 +39,11 @@ jobs:
           xcodebuild -version
 
       - name: Install xcodegen
-        run: brew install xcodegen
+        # runner image ships third-party taps (aws/tap) that new Homebrew
+        # refuses to trust; drop them so the warning never turns fatal
+        run: |
+          brew tap | grep -v '^homebrew/' | xargs -n1 brew untap || true
+          brew install xcodegen
 
       # Imports into a temporary keychain and deletes it in a post-run step
       - name: Import distribution certificate

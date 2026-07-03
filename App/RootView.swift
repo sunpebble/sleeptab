@@ -30,6 +30,10 @@ struct RootView: View {
         }
         .background(Theme.bg.ignoresSafeArea())
         .sheet(isPresented: $showPaywall) { PaywallView() }
+        #if DEBUG
+        // -paywall: 直接弹解锁页，供 ASC 内购审核截图用
+        .onAppear { if CommandLine.arguments.contains("-paywall") { showPaywall = true } }
+        #endif
         .task { await health.load(goal: goal) }
         .onChange(of: goalHours) { health.publish(goal: goal) }
         .onChange(of: scenePhase) { _, phase in

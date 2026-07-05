@@ -20,7 +20,7 @@ final class SleepMathTests: XCTestCase {
     func testMorningWakeBucketsToWakeDay() {
         let nights = SleepMath.nights(
             from: [DateInterval(start: date(1, 23), end: date(2, 7))], calendar: cal)
-        XCTAssertEqual(nights, [Night(day: day(2), asleep: 8 * 3600)])
+        XCTAssertEqual(nights, [Night(day: day(2), asleep: 8 * 3600, bedtime: date(1, 23))])
     }
 
     func testPreMidnightSegmentJoinsMorningSegment() {
@@ -40,7 +40,7 @@ final class SleepMathTests: XCTestCase {
             DateInterval(start: date(5, 23), end: date(6, 7)),
             DateInterval(start: date(5, 23, 30), end: date(6, 6, 30)),
         ], calendar: cal)
-        XCTAssertEqual(nights, [Night(day: day(6), asleep: 8 * 3600)])
+        XCTAssertEqual(nights, [Night(day: day(6), asleep: 8 * 3600, bedtime: date(5, 23))])
     }
 
     func testDebtSumsShortfallAndClampsAtZero() {
@@ -75,6 +75,41 @@ final class SleepMathTests: XCTestCase {
         ]
         XCTAssertEqual(SleepMath.debt(nights: nights, goal: 8 * 3600, asOf: asOf, calendar: cal),
                        1 * 3600, accuracy: 1)
+    }
+
+    func testWeekdayWeekendAverages() {
+        // June 2026: the 1st is a Monday, so day(6)/day(7) are Sat/Sun wake days
+        let nights = [
+            Night(day: day(4), asleep: 7 * 3600),   // Thu
+            Night(day: day(5), asleep: 6 * 3600),   // Fri
+            Night(day: day(6), asleep: 9 * 3600),   // Sat
+            Night(day: day(7), asleep: 8 * 3600),   // Sun
+        ]
+        let split = SleepMath.weekdayWeekendAverages(nights: nights, calendar: cal)
+        XCTAssertEqual(split.weekday!, 6.5 * 3600, accuracy: 1)
+        XCTAssertEqual(split.weekend!, 8.5 * 3600, accuracy: 1)
+
+        let empty = SleepMath.weekdayWeekendAverages(nights: [], calendar: cal)
+        XCTAssertNil(empty.weekday)
+        XCTAssertNil(empty.weekend)
+    }
+
+    func testBedtimeStats() {
+        // 23:00 and 01:00 straddle midnight: mean is 00:00, spread 1h — no wraparound blowup
+        let nights = [
+            Night(day: day(2), asleep: 8 * 3600, bedtime: date(1, 23)),
+            Night(day: day(3), asleep: 7 * 3600, bedtime: date(3, 1)),
+        ]
+        let stats = SleepMath.bedtimeStats(nights: nights)!
+        XCTAssertEqual(stats.avgOffset, 0, accuracy: 1)
+        XCTAssertEqual(stats.spread, 3600, accuracy: 1)
+
+        // nights without bedtime (old cached data) are skipped; under 2 usable → nil
+        let sparse = [
+            Night(day: day(2), asleep: 8 * 3600, bedtime: date(1, 23)),
+            Night(day: day(3), asleep: 7 * 3600),
+        ]
+        XCTAssertNil(SleepMath.bedtimeStats(nights: sparse))
     }
 
     func testWidgetSummaryRoundtrip() throws {

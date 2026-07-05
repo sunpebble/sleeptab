@@ -13,6 +13,7 @@ struct PaywallView: View {
 
             VStack(alignment: .leading, spacing: 14) {
                 feature("chart.bar", "Full sleep history — 30 and 90 night trends")
+                feature("lightbulb", "Insights — bedtime consistency, weekday vs weekend")
                 feature("square.grid.2x2", "Sleep debt widget on your Home Screen")
                 feature("heart", "Support an indie developer")
             }

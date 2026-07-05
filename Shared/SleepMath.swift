@@ -3,6 +3,7 @@ import Foundation
 struct Night: Codable, Equatable, Identifiable {
     let day: Date        // startOfDay of the wake day
     let asleep: TimeInterval
+    var bedtime: Date? = nil  // earliest fall-asleep time; nil in pre-existing cached data
     var id: Date { day }
 }
 
@@ -19,7 +20,8 @@ enum SleepMath {
             buckets[key, default: []].append(interval)
         }
         return buckets
-            .map { Night(day: $0.key, asleep: mergedDuration($0.value)) }
+            .map { Night(day: $0.key, asleep: mergedDuration($0.value),
+                         bedtime: $0.value.map(\.start).min()) }
             .sorted { $0.day < $1.day }
     }
 
@@ -35,6 +37,31 @@ enum SleepMath {
             }
         }
         return merged.reduce(0) { $0 + $1.end.timeIntervalSince($1.start) }
+    }
+
+    /// Average asleep time split by wake day: weekend nights are the ones you
+    /// wake up from on Sat/Sun (i.e. Friday and Saturday nights). nil when empty.
+    static func weekdayWeekendAverages(nights: [Night], calendar: Calendar = .current)
+        -> (weekday: TimeInterval?, weekend: TimeInterval?) {
+        func average(_ list: [Night]) -> TimeInterval? {
+            list.isEmpty ? nil : list.map(\.asleep).reduce(0, +) / Double(list.count)
+        }
+        let weekend = nights.filter { calendar.isDateInWeekend($0.day) }
+        let weekday = nights.filter { !calendar.isDateInWeekend($0.day) }
+        return (average(weekday), average(weekend))
+    }
+
+    /// Bedtime as an offset from midnight of the wake day (negative = before
+    /// midnight), so 23:30 and 00:30 are 60 minutes apart — no wraparound.
+    /// Returns the mean offset and the standard deviation; nil under 2 nights.
+    static func bedtimeStats(nights: [Night]) -> (avgOffset: TimeInterval, spread: TimeInterval)? {
+        let offsets = nights.compactMap { night in
+            night.bedtime.map { $0.timeIntervalSince(night.day) }
+        }
+        guard offsets.count >= 2 else { return nil }
+        let mean = offsets.reduce(0, +) / Double(offsets.count)
+        let variance = offsets.reduce(0) { $0 + ($1 - mean) * ($1 - mean) } / Double(offsets.count)
+        return (mean, variance.squareRoot())
     }
 
     /// Rolling sleep debt over the nights recorded in the last `window` days.

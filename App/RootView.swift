@@ -23,6 +23,7 @@ struct RootView: View {
                     debtCard
                     chartCard
                     weekCard
+                    insightsCard
                     goalCard
                 }
             }
@@ -188,6 +189,68 @@ struct RootView: View {
         }
         .padding(18)
         .background(RoundedRectangle(cornerRadius: 20).fill(Theme.card))
+    }
+
+    private var insightsCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("INSIGHTS · LAST \(shownNights.count) NIGHTS")
+                .font(Theme.font(10, weight: .semibold))
+                .kerning(1)
+                .foregroundStyle(Theme.faded)
+            if pro.isPro {
+                let split = SleepMath.weekdayWeekendAverages(nights: shownNights)
+                if let weekday = split.weekday {
+                    insightRow("WEEKDAY AVG", hoursMinutes(weekday))
+                }
+                if let weekend = split.weekend {
+                    insightRow("WEEKEND AVG", hoursMinutes(weekend))
+                }
+                if let best = shownNights.max(by: { $0.asleep < $1.asleep }) {
+                    insightRow("BEST NIGHT", nightText(best))
+                }
+                if let worst = shownNights.min(by: { $0.asleep < $1.asleep }) {
+                    insightRow("ROUGHEST", nightText(worst))
+                }
+                if let stats = SleepMath.bedtimeStats(nights: shownNights) {
+                    let midnight = Calendar.current.startOfDay(for: .now)
+                    insightRow("AVG BEDTIME", midnight.addingTimeInterval(stats.avgOffset)
+                        .formatted(.dateTime.hour().minute()))
+                    insightRow("CONSISTENCY", "± " + hoursMinutes(stats.spread))
+                }
+            } else {
+                Button {
+                    showPaywall = true
+                } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "lock.fill").font(.system(size: 11))
+                        Text("Weekday vs weekend, best & roughest nights — unlock with Pro")
+                            .font(Theme.font(12))
+                            .multilineTextAlignment(.leading)
+                    }
+                    .foregroundStyle(Theme.faded)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(18)
+        .background(RoundedRectangle(cornerRadius: 20).fill(Theme.card))
+    }
+
+    private func insightRow(_ label: String, _ value: String) -> some View {
+        HStack {
+            Text(label)
+                .font(Theme.font(11, weight: .semibold))
+                .kerning(1)
+                .foregroundStyle(Theme.faded)
+            Spacer()
+            Text(value)
+                .font(Theme.font(15, weight: .bold).monospacedDigit())
+                .foregroundStyle(Theme.cream)
+        }
+    }
+
+    private func nightText(_ night: Night) -> String {
+        "\(hoursMinutes(night.asleep)) · \(night.day.formatted(.dateTime.month(.abbreviated).day()))"
     }
 
     private var goalCard: some View {

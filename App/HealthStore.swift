@@ -58,7 +58,9 @@ final class HealthStore {
             let day = calendar.date(byAdding: .day, value: -offset, to: today)!
             // deterministic wobble: ~5.8–8.5h with a rough night every 5th
             let hours = 7.0 + sin(Double(offset) * 1.7) * 1.3 + (offset % 5 == 0 ? -1.2 : 0.2)
-            return Night(day: day, asleep: hours * 3600)
+            // bedtime drifts around 23:15 ± ~50min
+            let bedtime = day.addingTimeInterval((-0.75 + sin(Double(offset) * 0.9) * 0.85) * 3600)
+            return Night(day: day, asleep: hours * 3600, bedtime: bedtime)
         }
         .sorted { $0.day < $1.day }
     }

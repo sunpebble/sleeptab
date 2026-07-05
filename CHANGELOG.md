@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/sunpebble/sleeptab/compare/v0.2.1...v0.3.0) (2026-07-05)
+
+
+### Features
+
+* Pro insights — weekday vs weekend, best/roughest nights, bedtime consistency ([633b90d](https://github.com/sunpebble/sleeptab/commit/633b90db898e9bb8e283d798ff0d6edd470e7327))
+
 ## [0.2.1](https://github.com/sunpebble/sleeptab/compare/v0.2.0...v0.2.1) (2026-07-03)
 
 

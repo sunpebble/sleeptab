@@ -23,7 +23,7 @@ jobs:
   testflight:
     needs: release-please
     if: needs.release-please.outputs.release_created == 'true'
-    runs-on: macos-latest
+    runs-on: macos-15
     env:
       ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
       ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
@@ -39,10 +39,10 @@ jobs:
           xcodebuild -version
 
       - name: Install xcodegen
-        # runner image ships third-party taps (aws/tap) that new Homebrew
-        # refuses to trust; drop them so the warning never turns fatal
         run: |
-          brew tap | grep -v '^homebrew/' | xargs -n1 brew untap || true
+          for tap in $(brew tap); do
+            case "$tap" in homebrew/*) ;; *) brew trust "$tap" ;; esac
+          done
           brew install xcodegen
 
       # Imports into a temporary keychain and deletes it in a post-run step

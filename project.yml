@@ -74,11 +74,23 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
     dependencies:
       - target: Sleeptab
+  SleeptabUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - SleeptabUITests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.sunpebble.sleeptab.uitests
+    dependencies:
+      - target: Sleeptab
 schemes:
   Sleeptab:
     build:
       targets:
         Sleeptab: all
+        SleeptabUITests: [test]
     run:
       config: Debug
       storeKitConfiguration: Sleeptab.storekit
@@ -88,3 +100,4 @@ schemes:
     test:
       targets:
         - SleeptabTests
+        - SleeptabUITests

@@ -1,0 +1,336 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "SLEEPTAB": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SLEEPTAB"
+          }
+        }
+      }
+    },
+    "PRO": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PRO"
+          }
+        }
+      }
+    },
+    "No sleep data yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无睡眠数据"
+          }
+        }
+      }
+    },
+    "Sleeptab reads sleep from Apple Health.\nWear your watch tonight, or check\nHealth → Sharing → Apps → Sleeptab.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleeptab 通过“健康”读取睡眠数据。\n今晚戴上手表,或在\n“健康” → 共享 → App → Sleeptab 中查看。"
+          }
+        }
+      }
+    },
+    "ALL CAUGHT UP": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已补足"
+          }
+        }
+      }
+    },
+    "NO SLEEP DEBT · LAST 14 NIGHTS": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近 14 晚 · 无睡眠负债"
+          }
+        }
+      }
+    },
+    "SLEEP DEBT · LAST 14 NIGHTS": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近 14 晚的睡眠负债"
+          }
+        }
+      }
+    },
+    "%lldN": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 晚"
+          }
+        }
+      }
+    },
+    "AVG · LAST 7 NIGHTS": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平均 · 最近 7 晚"
+          }
+        }
+      }
+    },
+    "VS GOAL": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "对比目标"
+          }
+        }
+      }
+    },
+    "INSIGHTS · LAST %lld NIGHTS": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "洞察 · 最近 %lld 晚"
+          }
+        }
+      }
+    },
+    "WEEKDAY AVG": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作日平均"
+          }
+        }
+      }
+    },
+    "WEEKEND AVG": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周末平均"
+          }
+        }
+      }
+    },
+    "BEST NIGHT": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最佳一晚"
+          }
+        }
+      }
+    },
+    "ROUGHEST": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最差一晚"
+          }
+        }
+      }
+    },
+    "AVG BEDTIME": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平均就寝"
+          }
+        }
+      }
+    },
+    "CONSISTENCY": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一致性"
+          }
+        }
+      }
+    },
+    "Weekday vs weekend, best & roughest nights — unlock with Pro": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作日与周末对比、最佳与最差一晚 — 用 Pro 解锁"
+          }
+        }
+      }
+    },
+    "SLEEP NEED": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睡眠目标"
+          }
+        }
+      }
+    },
+    "SLEEPTAB PRO": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SLEEPTAB PRO"
+          }
+        }
+      }
+    },
+    "Full sleep history — 30 and 90 night trends": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完整睡眠历史 — 30 与 90 晚趋势"
+          }
+        }
+      }
+    },
+    "Insights — bedtime consistency, weekday vs weekend": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "洞察 — 就寝规律、工作日与周末对比"
+          }
+        }
+      }
+    },
+    "Sleep debt widget on your Home Screen": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主屏幕睡眠负债小组件"
+          }
+        }
+      }
+    },
+    "Support an indie developer": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持独立开发者"
+          }
+        }
+      }
+    },
+    "PAY ONCE. YOURS FOREVER.\nNO SUBSCRIPTION. NO ACCOUNT.\nYOUR DATA NEVER LEAVES THIS DEVICE.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一次购买,终身可用。\n无需订阅,无需账号。\n你的数据绝不离开本设备。"
+          }
+        }
+      }
+    },
+    "UNLOCK FOR %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以 %@ 解锁"
+          }
+        }
+      }
+    },
+    "Restore Purchase": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复购买"
+          }
+        }
+      }
+    },
+    "Product not available. Check App Store Connect setup.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "商品不可用。请检查 App Store Connect 配置。"
+          }
+        }
+      }
+    },
+    "Couldn't load product: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法加载商品:%@"
+          }
+        }
+      }
+    },
+    "Purchase couldn't be verified: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "购买无法验证:%@"
+          }
+        }
+      }
+    },
+    "Purchase is pending approval.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "购买待审批。"
+          }
+        }
+      }
+    },
+    "Purchase failed: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "购买失败:%@"
+          }
+        }
+      }
+    },
+    "Restore failed: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复失败:%@"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.3"
+}

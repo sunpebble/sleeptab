@@ -68,7 +68,7 @@ struct PaywallView: View {
         }
     }
 
-    private func feature(_ icon: String, _ text: String) -> some View {
+    private func feature(_ icon: String, _ text: LocalizedStringKey) -> some View {
         HStack(spacing: 12) {
             Image(systemName: icon).frame(width: 24)
             Text(text).font(Theme.font(14))

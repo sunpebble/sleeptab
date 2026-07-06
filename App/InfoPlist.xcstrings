@@ -1,0 +1,26 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "Sleeptab reads your sleep data to calculate your sleep debt. Your data never leaves this device.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleeptab 读取你的睡眠数据以计算睡眠负债。你的数据不会离开本设备。"
+          }
+        }
+      }
+    },
+    "Sleeptab does not write any data to Health. This permission is required by the HealthKit framework.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleeptab 不会向“健康”写入任何数据。此权限为 HealthKit 框架所必需。"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.3"
+}

@@ -1,0 +1,76 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "Sleep Debt": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睡眠负债"
+          }
+        }
+      }
+    },
+    "Your running sleep debt at a glance.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一眼查看你的累计睡眠负债。"
+          }
+        }
+      }
+    },
+    "Sleeptab Pro": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleeptab Pro"
+          }
+        }
+      }
+    },
+    "Unlock in the app": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 App 中解锁"
+          }
+        }
+      }
+    },
+    "CAUGHT UP": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已补足"
+          }
+        }
+      }
+    },
+    "SLEEP DEBT": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睡眠负债"
+          }
+        }
+      }
+    },
+    "Open Sleeptab to sync": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 Sleeptab 同步"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.3"
+}

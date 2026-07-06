@@ -236,7 +236,7 @@ struct RootView: View {
         .background(RoundedRectangle(cornerRadius: 20).fill(Theme.card))
     }
 
-    private func insightRow(_ label: String, _ value: String) -> some View {
+    private func insightRow(_ label: LocalizedStringKey, _ value: String) -> some View {
         HStack {
             Text(label)
                 .font(Theme.font(11, weight: .semibold))

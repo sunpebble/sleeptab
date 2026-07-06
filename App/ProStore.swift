@@ -39,10 +39,10 @@ final class ProStore {
         do {
             product = try await Product.products(for: [Self.productID]).first
             if product == nil {
-                purchaseError = "Product not available. Check App Store Connect setup."
+                purchaseError = String(localized: "Product not available. Check App Store Connect setup.")
             }
         } catch {
-            purchaseError = "Couldn't load product: \(error.localizedDescription)"
+            purchaseError = String(localized: "Couldn't load product: \(error.localizedDescription)")
         }
         await refresh()
     }
@@ -61,7 +61,7 @@ final class ProStore {
     func purchase() async {
         purchaseError = nil
         guard let product else {
-            purchaseError = "Product not available. Check App Store Connect setup."
+            purchaseError = String(localized: "Product not available. Check App Store Connect setup.")
             return
         }
         do {
@@ -70,16 +70,16 @@ final class ProStore {
                 unlock()
                 await transaction.finish()
             case .success(.unverified(_, let error)):
-                purchaseError = "Purchase couldn't be verified: \(error.localizedDescription)"
+                purchaseError = String(localized: "Purchase couldn't be verified: \(error.localizedDescription)")
             case .pending:
-                purchaseError = "Purchase is pending approval."
+                purchaseError = String(localized: "Purchase is pending approval.")
             case .userCancelled:
                 break
             @unknown default:
                 break
             }
         } catch {
-            purchaseError = "Purchase failed: \(error.localizedDescription)"
+            purchaseError = String(localized: "Purchase failed: \(error.localizedDescription)")
         }
     }
 
@@ -89,7 +89,7 @@ final class ProStore {
         do {
             try await AppStore.sync()
         } catch {
-            purchaseError = "Restore failed: \(error.localizedDescription)"
+            purchaseError = String(localized: "Restore failed: \(error.localizedDescription)")
         }
         await refresh()
     }

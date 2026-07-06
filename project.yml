@@ -8,7 +8,7 @@ settings:
   base:
     SWIFT_VERSION: "5.0"
     DEVELOPMENT_TEAM: 62HCT6Q83X
-    MARKETING_VERSION: 0.3.0 # x-release-please-version
+    MARKETING_VERSION: 0.4.0 # x-release-please-version
     CURRENT_PROJECT_VERSION: 1
 targets:
   Sleeptab:

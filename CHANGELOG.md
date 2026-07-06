@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/sunpebble/sleeptab/compare/v0.3.0...v0.4.0) (2026-07-06)
+
+
+### Features
+
+* add Simplified Chinese (zh-Hans) localization ([dc82224](https://github.com/sunpebble/sleeptab/commit/dc8222409cccc9b54b85c8133055be5c0731340e))
+
 ## [0.3.0](https://github.com/sunpebble/sleeptab/compare/v0.2.1...v0.3.0) (2026-07-05)
 
 

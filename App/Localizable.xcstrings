@@ -36,7 +36,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sleeptab 通过“健康”读取睡眠数据。\n今晚戴上手表,或在\n“健康” → 共享 → App → Sleeptab 中查看。"
+            "value": "Sleeptab 通过“健康”读取睡眠数据。\n今晚戴上手表，或在\n“健康” → 共享 → App → Sleeptab 中查看。"
           }
         }
       }
@@ -246,7 +246,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "一次购买,终身可用。\n无需订阅,无需账号。\n你的数据绝不离开本设备。"
+            "value": "一次购买，终身可用。\n无需订阅，无需账号。\n你的数据绝不离开本设备。"
           }
         }
       }

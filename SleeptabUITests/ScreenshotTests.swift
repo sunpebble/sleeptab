@@ -12,16 +12,20 @@ final class ScreenshotTests: XCTestCase {
     @MainActor
     func testCaptureScreenshots() {
         let app = XCUIApplication()
-        app.launchArguments += ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_Hans", "-seedDemo"]
+        // -pro: 30/90 晚区间是 Pro 功能，截图需要解锁态
+        app.launchArguments += ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_Hans", "-seedDemo", "-pro"]
         app.launch()
-        sleep(6)
+        XCTAssertTrue(app.staticTexts["洞察 · 最近 7 晚"].waitForExistence(timeout: 15))
         save(XCUIScreen.main.screenshot(), "sleeptab-zh-1-top.png")
-        app.swipeUp(); sleep(2)
+        // 切到 30 晚区间，等洞察标题更新后再截，避免截到未变化的画面
+        app.buttons["30 晚"].tap()
+        XCTAssertTrue(app.staticTexts["洞察 · 最近 30 晚"].waitForExistence(timeout: 10))
         save(XCUIScreen.main.screenshot(), "sleeptab-zh-2-week.png")
         app.terminate()
 
         let app2 = XCUIApplication()
-        app2.launchArguments += ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_Hans", "-paywall"]
+        // -isPro NO: 覆盖上面 -pro 落盘的解锁缓存，否则 paywall 会自动关闭
+        app2.launchArguments += ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_Hans", "-paywall", "-isPro", "NO"]
         app2.launch()
         sleep(3)
         save(XCUIScreen.main.screenshot(), "sleeptab-zh-3-paywall.png")

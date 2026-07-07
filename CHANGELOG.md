@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/sunpebble/sleeptab/compare/v0.4.0...v0.4.1) (2026-07-07)
+
+
+### Bug Fixes
+
+* **i18n:** use full-width commas in zh copy ([0ad30cf](https://github.com/sunpebble/sleeptab/commit/0ad30cf19852e8099ef07fb15f0e339e418b60d8))
+
 ## [0.4.0](https://github.com/sunpebble/sleeptab/compare/v0.3.0...v0.4.0) (2026-07-06)
 
 

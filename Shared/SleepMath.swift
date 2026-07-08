@@ -12,7 +12,6 @@ enum SleepMath {
     /// iPhone often both log the same night). Night key: the calendar day 12h after
     /// the interval ends — morning wake-ups land on the wake day, pre-midnight
     /// segments land with the following morning.
-    /// ponytail: afternoon naps count toward the coming night; good enough
     static func nights(from intervals: [DateInterval], calendar: Calendar = .current) -> [Night] {
         var buckets: [Date: [DateInterval]] = [:]
         for interval in intervals {
@@ -66,7 +65,6 @@ enum SleepMath {
 
     /// Rolling sleep debt over the nights recorded in the last `window` days.
     /// Surplus nights offset shortfalls; the total never goes below zero.
-    /// ponytail: nights with no data are skipped, not counted as zero sleep
     static func debt(nights: [Night], goal: TimeInterval, window: Int = 14,
                      asOf: Date = .now, calendar: Calendar = .current) -> TimeInterval {
         guard let cutoff = calendar.date(byAdding: .day, value: -window,

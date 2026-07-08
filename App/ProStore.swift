@@ -14,7 +14,6 @@ final class ProStore {
     init() {
         // 买断解锁状态缓存在本地:已购用户冷启动即解锁,不依赖启动时那次
         // currentEntitlements 查询(TestFlight 更新后首启经常为空)。
-        // ponytail: 退款不回收缓存 —— refresh() 本就只增不减,$1.99 买断不值得防
         isPro = UserDefaults.standard.bool(forKey: Self.proCacheKey)
     }
 
